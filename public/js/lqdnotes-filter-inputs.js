@@ -2,7 +2,7 @@
 // regular text in place of the inputs.
 function prepareNotes() {
     // Get input boxes we are replacing
-    let filledInputs = Array.from(document.getElementByClassName( 'lqdnotes-blank-input' ) );
+    let filledInputs = Array.from(document.getElementsByClassName( 'lqdnotes-blank-input' ) );
 
     // Iterate through instances of input box
     // TODO: If input not filled, return a blank space equivalent to the # of characters in correct answer

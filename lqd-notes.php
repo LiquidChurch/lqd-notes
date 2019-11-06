@@ -23,6 +23,7 @@ define( 'LQDNOTES_DIR', plugin_dir_path( __FILE__ ) );
 require_once LQDNOTES_DIR . 'includes/create-notes-role.php';
 require_once LQDNOTES_DIR . 'includes/create-notes-cpt.php';
 require_once LQDNOTES_DIR . 'admin/lqdnotes-guten-button.php';
+require_once LQDNOTES_DIR . 'public/filter-note-content.php';
 // require_once LQDNOTES_DIR . 'admin/settings-page.php';
 
 // Hook our code to create a custom role and cpt for Liquid Notes into the plugin initialization.
@@ -32,3 +33,59 @@ require_once LQDNOTES_DIR . 'admin/lqdnotes-guten-button.php';
 // https://stackoverflow.com/questions/22953418/plugin-activation-hook-not-working-in-wordpress
 add_action( 'init', 'createNotesRole' );
 add_action( 'init', 'createNotesCPT' );
+
+/**
+ * Enqueue CSS we'll use to format Liquid Notes related pages.
+ */
+function lqdnotes_enqueue_css() {
+	$lqdcssversion = filemtime( LQDNOTES_DIR . 'public/css/lqdnotes.css' );
+	wp_enqueue_style(
+		'lqdnotes-css',
+		plugins_url(  'public/css/lqdnotes.css', __FILE__ ),
+		array(),
+		$lqdcssversion
+	);
+}
+add_action( 'enqueue_block_assets', 'lqdnotes_enqueue_css' );
+
+/**
+ * Load CPT Template
+ */
+function lqdnotes_add_single_template( $originalTemplate ) {
+	$singleTemplate = plugin_dir_path(
+		\dirname(
+			__DIR__
+		)
+	);
+	$singleTemplate .= 'public/templates/single-lqdnote.php';
+
+	if ( 'lqdnotes' === get_post_type( get_the_ID() ) ) {
+		if (file_exists( $singleTemplate ) ) {
+			return $singleTemplate;
+		}
+	}
+
+	return $originalTemplate;
+}
+
+add_action( 'single_template', 'lqdnotes_add_single_template' );
+
+/**
+ * Load CPT Header Template
+ */
+function lqdnotes_add_header_template( $originalTemplate ) {
+	$singleTemplate = plugin_dir_path(
+		\dirname(
+			__DIR__
+		)
+	);
+	$singleTemplate .= '/public/templates/lqdnotes-header.php';
+
+	if ( 'lqdnotes' === get_post_type( get_the_ID() ) ) {
+		if (file_exists( $singleTemplate) ) {
+			return $singleTemplate;
+		}
+	}
+
+	return $originalTemplate;
+}

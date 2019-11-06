@@ -1,0 +1,19 @@
+.lqdnotes-blank-it {
+    background-color: yellow;
+}
+input[type="text"].lqdnotes-blank-input {
+    display: inline;
+    width: auto;
+}
+
+.entry-content .lqdnotes-blank-it {
+    background-color: white;
+    color: white;
+}
+input[type="text"]:focus.lqdnotes-blank-input {
+    outline: none;
+}
+
+.lqdnotes-email {
+    margin-right: 10px !important;
+}

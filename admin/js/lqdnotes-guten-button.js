@@ -3,7 +3,7 @@
     // Create our button.
     var lqdNotesButton = function( props ) {
         return wp.element.createElement(
-            wp.Editor.RichTextToolbarButton, {
+            wp.editor.RichTextToolbarButton, {
                 icon: 'editor-code',
                 title: 'Blank It',
                 onClick: function () {
