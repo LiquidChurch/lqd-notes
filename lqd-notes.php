@@ -22,9 +22,13 @@ define( 'LQDNOTES_DIR', plugin_dir_path( __FILE__ ) );
 // Add code from other files by include.
 require_once LQDNOTES_DIR . 'includes/create-notes-role.php';
 require_once LQDNOTES_DIR . 'includes/create-notes-cpt.php';
-require_once LQDNOTES_DIR . 'admin/settings-page.php';
+require_once LQDNOTES_DIR . 'admin/lqdnotes-guten-button.php';
+// require_once LQDNOTES_DIR . 'admin/settings-page.php';
 
 // Hook our code to create a custom role and cpt for Liquid Notes into the plugin initialization.
 // TODO: This only needs to run once, abstract into lqdnotes_activate() function.
+// The lqdnotes_activate() is not working currently b/c the referenced code is not
+// in the same file, fix here:
+// https://stackoverflow.com/questions/22953418/plugin-activation-hook-not-working-in-wordpress
 add_action( 'init', 'createNotesRole' );
 add_action( 'init', 'createNotesCPT' );

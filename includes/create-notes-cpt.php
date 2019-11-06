@@ -54,11 +54,12 @@ function createNotesCPT() {
 		'menu_icon'         => 'dashicons-admin-comments',
 		'menu_position'     => 30,
 		'public'            => true,
-		'rewrite'           => 'notes', // TODO: Make permalink customizable
+		'rewrite'           => array('slug' => 'notes'), // TODO: Make permalink customizable
 		'supports'          => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackback', 'custom-fields',
 			'comments', 'revisions', 'page-attributes', 'post-formats' ),
 		'capabilities'      => $capabilities,
 		'map_meta_cap'      => true,
+		'show_in_rest'      => true,
 	);
 
 	$post_type = 'lqdnotes';
