@@ -25,12 +25,27 @@ function lqdnotes_enqueue_filters() {
 add_action( 'wp_enqueue_scripts', 'lqdnotes_enqueue_filters' );
 
 /**
+ * Add Freeform Notes Area.
+ *
+ * @param $content
+ *
+ * @return string
+ */
+function lqdnotes_add_freeform_notes( $content ) {
+	$content .= '<h2>Add Your Own Notes Here</h2>';
+	$content .= '<textarea rows="5"></textarea>';
+	return $content;
+}
+add_action( 'the_content', 'lqdnotes_add_freeform_notes');
+
+/**
  * Add an Email Field and Submit Button for the User.
  *
  * If the user fills out the email field and clicks "Send Notes" they will receive an HTML
  * copy of the message notes with their answers filled in.
  */
 function lqdnotes_add_email_submit( $content ) {
+	$content .= '<h2>Enter email address and click Send Notes button</h2>';
 	$content .= '<input type="email" class="lqdnotes-email">';
 	$content .= '<input type="submit" value="Send Notes" onclick="prepareNotes()">';
 	return $content;
