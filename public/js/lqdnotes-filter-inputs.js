@@ -6,6 +6,17 @@
  */
 
 /**
+ * Listen for Submit Button Click
+ *
+ * Android does not allow any inline JS, this means the onClick event won't work, use an eventListener to bypass
+ * this limitation.
+ */
+document.addEventListener( "DOMContentLoaded", function(event) {
+    document.getElementById('send_notes').addEventListener('click', prepareNotes);
+});
+
+
+/**
  * Convert Input Text Values to Spans
  *
  * When someone enters an email address and clicks submit we use JS to take the input values and return them as
@@ -51,13 +62,16 @@ function restrictImages() {
 function sendNotes() {
     restrictImages();
     // Get the content within our entry-content div
-    let theNoteContents = Array.from(document.getElementsByClassName( 'entry-content') );
+    let theNoteContents = Array.from(document.getElementsByClassName( 'message_notes'));
+
+    // Get the free form notes
+    let freeFormNotes = document.getElementById( 'free_form_notes').value;
 
     // Get the email address to send notes to.
-    let sendToEmail = document.getElementById( 'send_to_email' );
+    let sendToEmail = document.getElementById( 'send_to_email' ).value;
 
     // Get the title of the Message
-    let titleOfMessage = document.getElementsByTagName( 'title' )[0].innerHTML;
+    let titleOfMessage = document.title;
     let titleOfEmail = 'Message Notes for ' + titleOfMessage;
 
     // Start off with an empty string.
@@ -73,6 +87,7 @@ function sendNotes() {
     let data = {
         action: 'email_notes',
         notes: theHTMLToSend,
+        free_form_notes: freeFormNotes,
         send_to_email: sendToEmail,
         email_title: titleOfEmail
     };
