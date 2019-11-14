@@ -1,10 +1,10 @@
 <?php
 /**
- * Filters Notes CPT Public View
+ * Display Blanks in Message Notes
  *
  * Replaces <span> elements with <input> elements where appropriate to add interactivity.
  */
-function lqdnotes_enqueue_filters() {
+function lqdnotes_enqueue_display_blanks() {
 	$lqdfilterspanversion = filemtime( LQDNOTES_DIR .'public/js/lqdnotes-filter-span.js' );
 	wp_enqueue_script(
 		'lqdnotes-filter-spans',
@@ -12,17 +12,8 @@ function lqdnotes_enqueue_filters() {
 		array(),
 		$lqdfilterspanversion
 	);
-
-	$lqdfilterinputversion = filemtime( LQDNOTES_DIR . 'public/js/lqdnotes-filter-inputs.js' );
-	wp_enqueue_script(
-		'lqdnotes-filter-inputs',
-		// TODO: Should use LQDNOTES_DIR instead, add admin
-		plugin_dir_url( __FILE__ ) . 'js/lqdnotes-filter-inputs.js',
-		array(),
-		$lqdfilterinputversion
-	);
 }
-add_action( 'wp_enqueue_scripts', 'lqdnotes_enqueue_filters' );
+add_action( 'wp_enqueue_scripts', 'lqdnotes_enqueue_display_blanks' );
 
 /**
  * Add Freeform Notes Area.
@@ -46,8 +37,8 @@ add_action( 'the_content', 'lqdnotes_add_freeform_notes');
  */
 function lqdnotes_add_email_submit( $content ) {
 	$content .= '<h2>Enter email address and click Send Notes button</h2>';
-	$content .= '<input type="email" class="lqdnotes-email">';
-	$content .= '<input type="submit" value="Send Notes" onclick="prepareNotes()">';
+	$content .= '<input id="send_to_email" type="email" class="lqdnotes-email">';
+	$content .= '<input id="send_notes" type="submit" value="Send Notes" onclick="prepareNotes()">';
 	return $content;
 }
 add_filter( 'the_content', 'lqdnotes_add_email_submit' );

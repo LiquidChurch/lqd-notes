@@ -18,12 +18,16 @@ if ( ! defined( 'WPINC' ) ) {
 }
 // Instead of executing plugin_dir_path every time we want the plugin's path, we do it once here and call anywhere.
 define( 'LQDNOTES_DIR', plugin_dir_path( __FILE__ ) );
+define( 'LQDNOTES_URL', plugin_dir_url( __FILE__ ) );
 
 // Add code from other files by include.
 require_once LQDNOTES_DIR . 'includes/create-notes-role.php';
 require_once LQDNOTES_DIR . 'includes/create-notes-cpt.php';
 require_once LQDNOTES_DIR . 'admin/lqdnotes-guten-button.php';
-require_once LQDNOTES_DIR . 'public/filter-note-content.php';
+require_once LQDNOTES_DIR . 'public/display-blanks.php';
+require_once LQDNOTES_DIR . 'public/display-filled.php';
+require_once LQDNOTES_DIR . 'public/handle-ajax.php';
+require_once LQDNOTES_DIR . 'public/send-notes-email.php';
 // require_once LQDNOTES_DIR . 'admin/settings-page.php';
 
 // Hook our code to create a custom role and cpt for Liquid Notes into the plugin initialization.
@@ -47,45 +51,3 @@ function lqdnotes_enqueue_css() {
 	);
 }
 add_action( 'enqueue_block_assets', 'lqdnotes_enqueue_css' );
-
-/**
- * Load CPT Template
- */
-function lqdnotes_add_single_template( $originalTemplate ) {
-	$singleTemplate = plugin_dir_path(
-		\dirname(
-			__DIR__
-		)
-	);
-	$singleTemplate .= 'public/templates/single-lqdnote.php';
-
-	if ( 'lqdnotes' === get_post_type( get_the_ID() ) ) {
-		if (file_exists( $singleTemplate ) ) {
-			return $singleTemplate;
-		}
-	}
-
-	return $originalTemplate;
-}
-
-add_action( 'single_template', 'lqdnotes_add_single_template' );
-
-/**
- * Load CPT Header Template
- */
-function lqdnotes_add_header_template( $originalTemplate ) {
-	$singleTemplate = plugin_dir_path(
-		\dirname(
-			__DIR__
-		)
-	);
-	$singleTemplate .= '/public/templates/lqdnotes-header.php';
-
-	if ( 'lqdnotes' === get_post_type( get_the_ID() ) ) {
-		if (file_exists( $singleTemplate) ) {
-			return $singleTemplate;
-		}
-	}
-
-	return $originalTemplate;
-}
