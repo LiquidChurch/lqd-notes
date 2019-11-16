@@ -35,6 +35,7 @@ function prepareNotes() {
         // Set outerHTML to our regular text.
         filledInput.outerHTML = '<span class="lqdnotes-filled">' + inputText + '</span>';
     });
+    restrictImages();
     sendNotes();
 }
 
@@ -44,10 +45,13 @@ function prepareNotes() {
 function restrictImages() {
 
     // Get the figures we are modifying.
-    let figuresToRestrict = document.querySelectorAll( 'figure .wp-block-image');
+    let figuresToRestrict = document.querySelectorAll( 'figure.wp-block-image');
+    figuresToRestrict.forEach( figure => {
+        // https://stackoverflow.com/questions/19261197/how-can-i-remove-wrapper-parent-element-without-removing-the-child
+        figure.replaceWith(...figure.childNodes);
+    });
     // Get the images we are modifying.
-    let imagesToRestrict = document.querySelectorAll( '.wp-block-image img' );
-
+    let imagesToRestrict = document.querySelectorAll( 'img' );
     imagesToRestrict.forEach( image => {
         image.style.maxWidth = '600px';
     });
@@ -60,7 +64,6 @@ function restrictImages() {
  * @returns {boolean}
  */
 function sendNotes() {
-    restrictImages();
     // Get the content within our entry-content div
     let theNoteContents = Array.from(document.getElementsByClassName( 'message_notes'));
 
