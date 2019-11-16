@@ -105,6 +105,11 @@ function sendNotes() {
     return false;
 }
 
+/**
+ * Create Success Message
+ *
+ * Replaces the entry-content of the page with this message and button.
+ */
 function showSuccessMessage() {
     let theContent = Array.from(document.getElementsByClassName( 'entry-content' ));
     theContent.forEach(entry => {
@@ -115,6 +120,13 @@ function showSuccessMessage() {
     document.getElementById('refresh_page').addEventListener('click', refreshPage );
 }
 
+/**
+ * Redirect to notes page if button is clicked.
+ *
+ * This allows us to reset the DOM as we've made a number of changes in the process of prepping the notes for email.
+ *
+ * TODO: Can we place into virtual space and not actually modify site's DOM?
+ */
 function refreshPage() {
     window.location.reload();
 }
