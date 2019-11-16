@@ -28,6 +28,7 @@ require_once LQDNOTES_DIR . 'public/display-blanks.php';
 require_once LQDNOTES_DIR . 'public/display-filled.php';
 require_once LQDNOTES_DIR . 'public/handle-ajax.php';
 require_once LQDNOTES_DIR . 'public/send-notes-email.php';
+require_once LQDNOTES_DIR . 'public/template-loader.php';
 // require_once LQDNOTES_DIR . 'admin/settings-page.php';
 
 // Hook our code to create a custom role and cpt for Liquid Notes into the plugin initialization.

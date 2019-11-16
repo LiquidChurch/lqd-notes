@@ -35,7 +35,7 @@ add_filter( 'the_content', 'lqdnotes_add_div' );
  * @return string
  */
 function lqdnotes_add_freeform_notes( $content ) {
-	$content .= '<h2>Add Your Own Notes Here</h2>';
+	$content .= '<h3>Add Your Own Notes Here</h3>';
 	$content .= '<textarea id="free_form_notes" rows="5"></textarea>';
 	return $content;
 }
@@ -52,7 +52,7 @@ add_action( 'the_content', 'lqdnotes_add_freeform_notes');
  * @return string
  */
 function lqdnotes_add_email_submit( $content ) {
-	$content .= '<h2>Enter email address and click Send Notes button</h2>';
+	$content .= '<h3>Enter email address and click Send Notes button</h3>';
 	$content .= '<input id="send_to_email" type="email" class="lqdnotes-email">';
 	$content .= '<input id="send_notes" type="submit" value="Send Notes">';
 	return $content;

@@ -14,7 +14,7 @@ function send_notes_email( $message_notes, $free_form_notes, $send_to_email, $ti
 	$headers = array( 'Content-Type: text/html; charset=UTF-8' );
 	$message_notes = '<div style="margin: auto; max-width:600px;">' . $message_notes . '</div>';
 	// If the submitter has entered free form notes we append them to the end of the email.
-	if( isset($free_form_notes) ) {
+	if( isset($free_form_notes) and !empty($free_form_notes) ) {
 		$message_notes .= '<div style="margin:auto; max-width:600px;"><h3>Your Notes</h3>' . $free_form_notes . '</div>';
 	}
 	wp_mail( $to, $subject, $message_notes, $headers );

@@ -3,6 +3,8 @@
  *
  * Handles converting the text values in input boxes to spans, restricts the size of images to ensure email
  * compatibility, and send the content using jQuery to WP ajax-admin.php
+ *
+ * TODO: Add nonces, what about sanitization/validation?
  */
 
 /**
@@ -33,10 +35,11 @@ function prepareNotes() {
         let inputText = filledInput.value;
 
         // Set outerHTML to our regular text.
-        filledInput.outerHTML = '<span class="lqdnotes-filled">' + inputText + '</span>';
+        filledInput.outerHTML = '<span style="background-color:yellow" class="lqdnotes-filled">' + inputText + '</span>';
     });
     restrictImages();
     sendNotes();
+    showSuccessMessage();
 }
 
 /**
@@ -100,4 +103,18 @@ function sendNotes() {
         console.log(response);
     });
     return false;
+}
+
+function showSuccessMessage() {
+    let theContent = Array.from(document.getElementsByClassName( 'entry-content' ));
+    theContent.forEach(entry => {
+       entry.innerHTML = '<h3>Check your inbox...</h3>';
+       entry.innerHTML += '<p>Your notes are on the way.</p>';
+       entry.innerHTML += '<input id="refresh_page" type="submit" value="Back to Message Notes.">';
+    });
+    document.getElementById('refresh_page').addEventListener('click', refreshPage );
+}
+
+function refreshPage() {
+    window.location.reload();
 }
