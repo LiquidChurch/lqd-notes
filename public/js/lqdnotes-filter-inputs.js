@@ -115,6 +115,7 @@ function showSuccessMessage() {
     theContent.forEach(entry => {
        entry.innerHTML = '<h3>Check your inbox...</h3>';
        entry.innerHTML += '<p>Your notes are on the way.</p>';
+       entry.innerHTML += '<p><small>Don\'t see your notes? Check Your Spam Folder</small>';
        entry.innerHTML += '<input id="refresh_page" type="submit" value="Back to Message Notes.">';
     });
     document.getElementById('refresh_page').addEventListener('click', refreshPage );
