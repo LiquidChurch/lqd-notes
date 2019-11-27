@@ -1,5 +1,25 @@
 <?php
 /**
+ * Set from email address
+ *
+ * TODO: Make setting
+ */
+function lqdnotes_set_from_email( $original_email_address ) {
+	return 'noreply@liquidchurch.com';
+}
+add_filter( 'wp_mail_from', 'lqdnotes_set_from_email' );
+
+/**
+ * Set from name
+ *
+ * TODO: Make setting
+ */
+function lqdnotes_set_from_name( $original_email_from ) {
+	return 'Liquid Church';
+}
+add_filter( 'wp_mail_from_name', 'lqdnotes_set_from_name' );
+
+/**
  * Sends our email using wp_mail
  *
  * @param $message_notes

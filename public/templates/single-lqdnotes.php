@@ -25,7 +25,7 @@
                     <?php
                         the_content();
                     ?>
-                    <form>
+                    <form id="lqdnotes">
                         <h3>Add Your Own Notes Here</h3>
                         <textarea id="free_form_notes" rows="5"></textarea>
                         <h3>Enter email address and click Send Notes button</h3>
