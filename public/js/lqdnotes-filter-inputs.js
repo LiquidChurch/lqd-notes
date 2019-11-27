@@ -3,8 +3,6 @@
  *
  * Handles converting the text values in input boxes to spans, restricts the size of images to ensure email
  * compatibility, and send the content using jQuery to WP ajax-admin.php
- *
- * TODO: Add nonces, what about sanitization/validation?
  */
 
 /**
@@ -23,6 +21,8 @@ document.addEventListener( "DOMContentLoaded", function(event) {
  *
  * When someone enters an email address and clicks submit we use JS to take the input values and return them as
  * regular text in place of the inputs.
+ *
+ * TODO: Prevent default form submission action to enable validation.
  */
 function prepareNotes() {
     // Get input boxes we are replacing
