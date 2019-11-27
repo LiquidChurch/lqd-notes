@@ -8,6 +8,10 @@ teachers, lecturers, etc.
 * WordPress 5.0+ - Liquid Notes utilizes Gutenberg for its fill-in-the-blank capabilities and as such requires Gutenberg
 to be active with WP.
 
+## Documentation
+We provide brief documentation below, for more technical documentation please see the md files in the docs
+folder.
+
 ## Backend: Administering Liquid Notes
 After installing Liquid Notes one should see a "Liquid Notes" menu option on the WP Admin sidebar. The menu includes
 sub-items: All Notes and Add New. One can add/edit/delete notes very much as one would with WP's built in posts and
