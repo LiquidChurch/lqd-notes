@@ -46,6 +46,7 @@ function createNotesCPT() {
 
 	// Arguments array which we will pass to register_post_type function.
 	// Array will include the labels and capabilities arrays we've defined above.
+	// TODO: Add with_front = false, be careful, may break existing.
 	$args = array(
 		'description'       => 'Interactive fill-in-the-blank notes.',
 		'has_archive'       => 'true',

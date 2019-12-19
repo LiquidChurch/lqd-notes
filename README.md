@@ -1,5 +1,6 @@
 # Liquid Notes
 Version: 0.0.1 12/19/19
+
 Authors: Liquid Church (liquidchurch), Dave Mackey (@davidshq)
 
 ## What Is?
