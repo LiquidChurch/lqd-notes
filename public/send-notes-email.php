@@ -1,5 +1,11 @@
 <?php
 /**
+ * Functions Related to Sending Notes as an Email
+ *
+ * @since 0.0.1
+ */
+
+/**
  * Set from email address
  *
  * TODO: Make setting

@@ -5,6 +5,8 @@
  * Replaces <input> elements where appropriate with <span> elements.
  *
  * Create localized variable to pass admin_url to JS.
+ *
+ * @since 0.0.1
  */
 function lqdnotes_enqueue_display_filled() {
 	$lqdfilterinputversion = filemtime( LQDNOTES_DIR . 'public/js/lqdnotes-filter-inputs.js' );

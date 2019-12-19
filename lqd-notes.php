@@ -16,15 +16,17 @@
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
-// Instead of executing plugin_dir_path every time we want the plugin's path, we do it once here and call anywhere.
+
+// Instead of executing plugin_dir_path every time we want the plugin's path, we do it once here and can call anywhere.
 define( 'LQDNOTES_DIR', plugin_dir_path( __FILE__ ) );
 define( 'LQDNOTES_URL', plugin_dir_url( __FILE__ ) );
 
 // Add code from other files by include.
+// TODO: Implement autoloader.
 require_once LQDNOTES_DIR . 'includes/create-notes-role.php';
 require_once LQDNOTES_DIR . 'includes/create-notes-cpt.php';
 require_once LQDNOTES_DIR . 'admin/lqdnotes-guten-button.php';
-require_once LQDNOTES_DIR . 'public/display-blanks.php';
+require_once LQDNOTES_DIR . 'public/modify-display.php';
 require_once LQDNOTES_DIR . 'public/display-filled.php';
 require_once LQDNOTES_DIR . 'public/handle-ajax.php';
 require_once LQDNOTES_DIR . 'public/send-notes-email.php';
@@ -32,7 +34,7 @@ require_once LQDNOTES_DIR . 'public/template-loader.php';
 // require_once LQDNOTES_DIR . 'admin/settings-page.php';
 
 // Hook our code to create a custom role and cpt for Liquid Notes into the plugin initialization.
-// TODO: This only needs to run once, abstract into lqdnotes_activate() function.
+// TODO: This only needs to run once, abstract into lqdnotes_activate() function. See below.
 // The lqdnotes_activate() is not working currently b/c the referenced code is not
 // in the same file, fix here:
 // https://stackoverflow.com/questions/22953418/plugin-activation-hook-not-working-in-wordpress
@@ -41,6 +43,8 @@ add_action( 'init', 'createNotesCPT' );
 
 /**
  * Enqueue CSS we'll use to format Liquid Notes related pages.
+ *
+ * @since 0.0.1
  */
 function lqdnotes_enqueue_css() {
 	$lqdcssversion = filemtime( LQDNOTES_DIR . 'public/css/lqdnotes.css' );

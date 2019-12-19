@@ -68,7 +68,7 @@ function restrictImages() {
  */
 function sendNotes() {
     // Get the content within our entry-content div
-    let theNoteContents = Array.from(document.getElementsByClassName( 'message_notes'));
+    let theNoteContents = Array.from(document.getElementsByClassName( 'message-notes'));
 
     // Get the free form notes
     let freeFormNotes = document.getElementById( 'free_form_notes').value;

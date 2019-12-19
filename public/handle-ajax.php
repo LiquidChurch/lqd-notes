@@ -1,6 +1,10 @@
 <?php
 /**
 * Handle AJAX Request
+ *
+ * When our JS makes a request to the server, this is the code that handles that request.
+ *
+ * @since 0.0.1
 */
 function lqdnotes_ajax_process_request() {
 	if ( isset( $_POST["notes"] ) ) {

@@ -2,6 +2,8 @@
 /**
  * Registers our Gutenberg Liquid Notes Button in the Gutenberg Editor.
  *
+ * TODO: Add keyboard shortcut.
+ *
  */
 
 function lqdnotes_add_button_script_register() {
@@ -13,7 +15,6 @@ function lqdnotes_add_button_script_register() {
 		plugins_url( 'js/lqdnotes-guten-button.js', __FILE__ ),
 		array( 'wp-rich-text', 'wp-element', 'wp-editor' ),
 		$lqdjsversion
-	//
 	);
 }
 add_action( 'init', 'lqdnotes_add_button_script_register' );

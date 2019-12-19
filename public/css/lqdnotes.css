@@ -1,19 +1,55 @@
+/* Set background for selected word/phrase to be blanked to yellow. */
 .lqdnotes-blank-it {
     background-color: yellow;
 }
+
+/* Remove padding left/right for paragraph text. */
+.entry-content .message-notes p {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Modify the Header Formatting for Message Notes. */
+.entry-content .message-notes h1 {
+  font-size:3.2rem;
+  color: black;
+}
+
+.entry-content .message-notes h2 {
+  text-align: center;
+  display:block;
+  font-size:3rem;
+  color: black;
+  margin-bottom:15px;
+}
+
+.entry-content .message-notes h3 {
+  text-align: center;
+  display: block;
+  font-size: 2.5rem;
+  color: black;
+}
+
+
+/* Make our blankit inputs inline and nicely formatted. */
+/* TODO: Refine size of input boxes to fit surrounding text. */
 input[type="text"].lqdnotes-blank-input {
     display: inline;
     width: auto;
 }
 
+/* TODO: What does this do again? */
 .entry-content .lqdnotes-blank-it {
     background-color: white;
     color: white;
 }
+
+/* Remove outline around input text boxes when in focus. */
 input[type="text"]:focus.lqdnotes-blank-input {
     outline: none;
 }
 
+/* Align our email prompt correctly. */
 .lqdnotes-email {
     margin-right: 10px !important;
 }

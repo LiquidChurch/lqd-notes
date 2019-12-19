@@ -1,4 +1,5 @@
 // TODO: Written in ES5 to avoid build process, change to ES6
+// TODO: Add keyboard shortcut, see bold in Gutenberg /packages/format-library/src/bold/index.js
 (function ( wp ) {
     // Create our button.
     var lqdNotesButton = function( props ) {
