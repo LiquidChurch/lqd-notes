@@ -37,7 +37,11 @@ add_action( 'wp_enqueue_scripts', 'lqdnotes_enqueue_display_blanks' );
  * @since 0.0.1
  */
 function lqdnotes_add_div( $content ) {
-	$updated_content = '<div id="message-notes" class="message-notes">' . $content . '</div>';
-	return $updated_content;
+    if ( get_post_type( get_the_ID() ) == 'lqdnotes' ) {
+        $updated_content = '<div id="message-notes" class="message-notes">' . $content . '</div>';
+        return $updated_content;
+    } else {
+        return $content;
+    }
 }
 add_filter( 'the_content', 'lqdnotes_add_div' );
