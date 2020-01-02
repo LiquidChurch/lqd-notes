@@ -18,9 +18,12 @@ One should now see a "Liquid Notes" menu option on the WP Admin sidebar. The men
 
 Opening an existing note or adding a new one will pull up the editor screen with the Gutenberg editor enabled. Enter a title for the note, this will be transformed into a permalink, e.g. a title of "The World Ends" might result in a permalink like: https://nameofsite.com/notes/the-world-ends/
 
-One can create the notes in the editor or one can paste in external content. Liquid Notes was specifically designed to work with Google Docs (see GOOGLE-DOCS.md) but should work with other content sources as well.
+One can create the notes in the editor or one can paste in external content. Liquid Notes was specifically designed to work with Google Docs (see docs/GOOGLE-DOCS.md) but should work with other content sources as well.
 
 Once the note's content is complete one can set the "blanks" that will appear in the content on the frontend. This is accomplished by highlighting a desired word, clicking the dropdown next to the link icon, and choosing the Blank It option. The text should now be highlighted in yellow indicating that the blanking was successful. The word will continue to appear on the backend but will not appear on the front end to the user.
+
+## Emailing
+See docs/EMAIL.md for important notes on using WP's email functionality.
 
 ## Frontend: What the User Experiences
 On the frontend a user can visit a Liquid Note and see the content of the note the administrator entered. It will appear with all text that has been blanked replaced by a text input. Below the notes proper will be a free-form section for notes as well as an email field and a send button.
