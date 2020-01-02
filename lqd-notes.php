@@ -47,12 +47,15 @@ add_action( 'init', 'createNotesCPT' );
  * @since 0.0.1
  */
 function lqdnotes_enqueue_css() {
-	$lqdcssversion = filemtime( LQDNOTES_DIR . 'public/css/lqdnotes.css' );
-	wp_enqueue_style(
-		'lqdnotes-css',
-		plugins_url(  'public/css/lqdnotes.css', __FILE__ ),
-		array(),
-		$lqdcssversion
-	);
+    if ( get_post_type( get_the_ID() ) == 'lqdnotes' ) {
+        $lqdcssversion = filemtime( LQDNOTES_DIR . 'public/css/lqdnotes.css' );
+        wp_enqueue_style(
+            'lqdnotes-css',
+            plugins_url(  'public/css/lqdnotes.css', __FILE__ ),
+            array(),
+            $lqdcssversion
+        );
+    }
 }
+
 add_action( 'enqueue_block_assets', 'lqdnotes_enqueue_css' );
